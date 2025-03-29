@@ -1,0 +1,32 @@
+// Header section (sections/header.liquid)
+<header class="site-header">
+  <div class="container">
+    <div class="site-header__logo">
+      {% if template.name == 'index' %}
+        <h1 class="site-header__logo-link">
+          {{ shop.name }}
+        </h1>
+      {% else %}
+        <a href="/" class="site-header__logo-link">
+          {{ shop.name }}
+        </a>
+      {% endif %}
+    </div>
+    
+    <nav class="site-nav">
+      <ul>
+        {% for link in linklists.main-menu.links %}
+          <li>
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+    
+    <div class="site-header__cart">
+      <a href="/cart">
+        Cart ({{ cart.item_count }})
+      </a>
+    </div>
+  </div>
+</header>

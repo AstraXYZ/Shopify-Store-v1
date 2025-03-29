@@ -1,0 +1,43 @@
+// Footer section (sections/footer.liquid)
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__content">
+      <div class="site-footer__newsletter">
+        <h3>Subscribe to our newsletter</h3>
+        {% form 'customer' %}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <input type="email" name="contact[email]" placeholder="Email address">
+          <button type="submit">Subscribe</button>
+        {% endform %}
+      </div>
+      
+      <div class="site-footer__links">
+        <h3>Quick links</h3>
+        <ul>
+          {% for link in linklists.footer.links %}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      
+      <div class="site-footer__social">
+        <h3>Follow us</h3>
+        <ul>
+          {% if settings.social_facebook_link != blank %}
+            <li><a href="{{ settings.social_facebook_link }}">Facebook</a></li>
+          {% endif %}
+          {% if settings.social_instagram_link != blank %}
+            <li><a href="{{ settings.social_instagram_link }}">Instagram</a></li>
+          {% endif %}
+          {% if settings.social_twitter_link != blank %}
+            <li><a href="{{ settings.social_twitter_link }}">Twitter</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+    
+    <div class="site-footer__bottom">
+      <p>&copy; {{ 'now' | date: "%Y" }} {{ shop.name }}. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
